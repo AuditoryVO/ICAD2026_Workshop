@@ -1,2 +1,2 @@
 # Workshop
-Astronomical data Sonification Workshop.
+Hands on Aladin Sky Atlas sonification with SoniAladin.
