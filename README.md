@@ -26,3 +26,5 @@ Latency: 0.15s (right context).
 	5- Say 'music' or press 'right arrow' to start the sonification. 
 	   Say 'stop' or press 'left arrow' to stop the sonification. 
 	   Say 'exit' or press'Esc' to finish.
+	   
+<img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
