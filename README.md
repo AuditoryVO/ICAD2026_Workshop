@@ -23,4 +23,3 @@ Latency: 0.15s (right context).
 	4- Run SoniAladin.py from the Terminal.
 	
 	5- Say 'music' or press 'right arrow' to start the sonification. Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'Esc' to finish.
-
