@@ -17,9 +17,12 @@ Accuracy: 10.38 (tedlium test) 9.85 (librispeech test-clean).
 Speed: 0.11xRT (desktop).
 Latency: 0.15s (right context).
 
-	3- On mac, open GarageBand an load a virtual instrument, for instance a 'Classic Electric Piano'. You'll also need to activate the IAC driver in MIDI System preferences.
+	3- On mac, open GarageBand an load a virtual instrument, for instance a 'Classic Electric Piano'.
+	   You'll also need to activate the IAC driver in MIDI System preferences.
 	   On Windows, SoniAladin uses GM directly so you don't need an additional sound engine.  
 
 	4- Run SoniAladin.py from the Terminal.
 	
-	5- Say 'music' or press 'right arrow' to start the sonification. Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'Esc' to finish.
+	5- Say 'music' or press 'right arrow' to start the sonification. 
+	   Say 'stop' or press 'left arrow' to stop the sonification. 
+	   Say 'exit' or press'Esc' to finish.
