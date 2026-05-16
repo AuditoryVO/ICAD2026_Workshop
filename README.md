@@ -6,7 +6,8 @@ SoniAladin is an application developed in the context of the Open Science initia
 This research has made use of the Spanish Virtual Observatory (https://svo.cab.inta-csic.es) project funded by MCIN/AEI/10.13039/501100011033 through grant PID2023-146210NB-I00.
 ![](UI.jpg)
 
-NOTE:
+INSTALLATION:
+
 The voice recognition module requires the local model vosk-model-small-en-us-0.15.
 
 	1- Download and unzip it from: https://alphacephei.com/vosk/models
