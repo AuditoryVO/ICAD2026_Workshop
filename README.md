@@ -4,7 +4,6 @@ Exploring Aladin Sky Atlas through sound with SoniAladin.
 SoniAladin is an application developed in the context of the Open Science initiative of the Spanish Virtual Observatory (SVO). It allows the transformation of Aladin’s virtual sky into audible representations.
 
 This research has made use of the Spanish Virtual Observatory (https://svo.cab.inta-csic.es) project funded by MCIN/AEI/10.13039/501100011033 through grant PID2023-146210NB-I00.
-
 ![](UI.jpg)
 
 NOTE:
