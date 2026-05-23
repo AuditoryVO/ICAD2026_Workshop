@@ -8,6 +8,8 @@ This research has made use of the Spanish Virtual Observatory (https://svo.cab.i
 
 ---------------------------------------------------------
 INSTALLATION:
+
 Please read carefully the SoniAladin-Installation_guidelines.pdf file and follow the instructions.
 You can fins additional information in the reference paper Exploring Aladin Sky Atlas through sound	   
+
 <img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
