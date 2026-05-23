@@ -8,6 +8,9 @@ This research has made use of the Spanish Virtual Observatory (https://svo.cab.i
 
 ---------------------------------------------------------
 INSTALLATION:
+Please read carefully the SoniAladin-Installation_guidelines.pdf file and follow the instructions.
+
+Alternatively, if you clone this repository:
 
 The voice recognition module requires the local model vosk-model-small-en-us-0.15.
 
