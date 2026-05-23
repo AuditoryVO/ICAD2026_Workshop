@@ -14,6 +14,7 @@ You can find additional information in the reference paper Exploring Aladin Sky 
 
 <img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
 
+---------------------------------------------------------
 
 ALTERNATIVE INSTALLATION (clone or download this repo):
 
