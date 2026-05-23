@@ -14,7 +14,8 @@ You can find additional information in the reference paper Exploring Aladin Sky 
 
 <img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
 
-Alternative installation (clone or download this repo):
+
+ALTERNATIVE INSTALLATION (clone or download this repo):
 
 The voice recognition module requires the local model vosk-model-small-en-us-0.15.
 
@@ -32,7 +33,7 @@ Latency: 0.15s (right context).
 	   You'll also need to activate the IAC driver in MIDI System preferences.
 	   On Windows, SoniAladin uses GM directly so you don't need an additional sound engine.  
 
-	4- Run SoniAladin.py from the Terminal or run the Jupyter notebook SoniAladin.ipynb
+	4- Run SoniAladin.py from the TerminaL
 	
 	5- Say 'music' or press 'right arrow' to start the sonification. 
 	   Say 'stop' or press 'left arrow' to stop the sonification. 
