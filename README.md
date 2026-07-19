@@ -9,7 +9,7 @@ This research has made use of the Spanish Virtual Observatory (https://svo.cab.i
 ---------------------------------------------------------
 INSTALLATION:
 
-Please explore the Documentation folder and read carefully the "SoniAladin-Installation_guidelines" file. Quick Installation guidelines can also be found both for Mac and Windows. You can find additional information in the reference ICAD'26 paper "Exploring Aladin Sky Atlas through sound".   
+Please explore the Documentation folder and read carefully the "SoniAladin-Installation_guidelines" file. Quick Installation guidelines can also be found both for Mac and Windows. You can find additional information in the ICAD'26 reference paper "Exploring Aladin Sky Atlas through sound".   
 
 <img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
 
