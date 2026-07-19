@@ -1,0 +1,68 @@
+WINDOWS QUICK INSTALLATION
+
+On Terminal:
+
+1- Install Python 3.12 typing: widget install --id Python.Python.3.12 --exact
+
+2 -To check Python version type on Terminal: python -V (or python --version)
+
+	Note: Python 3.14 won't allow the installation of rtmidi dependencies without additional installations => Python 3.12 is recommended
+
+3- To install pip from Terminal type: python -m ensurepip --upgrade
+	(help: https://pip.pypa.io/en/stable/installation/)
+ 
+4- To install SoniAladin:
+
+	-Download the workshop files from:
+		Drive: https://drive.google.com/drive/folders/1eKwrJuPZZoxo2iVf9166k-EStZnv6OKF
+
+		or GitHub (requires additional Vosk model downloads): https://github.com/AuditoryVO/ICAD2026_Workshop/tree/main
+
+	-Run the Terminal and navigate to the folder where you downloaded the workshop files. 
+		Type "cd <your_path>" to go to your folder. You can type "ls" to list the files in the folder.
+
+	-type: python -m pip install -r requirements.txt
+		(help: https://pip.pypa.io/en/stable/user_guide/)
+
+	-If any error with requirements appears => Try installing them manually.
+
+5- Run SoniAladin from Terminal to check that the module is up and running (it won't sound yet): python SoniAladin.py => Allow microphone access if needed
+
+	Note: If all the installation is completed, the following message should appear on Terminal:
+		"Listening... Say 'music' or press 'right arrow' to start the sonification. 
+		Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'Esc' to finish."
+
+
+Installing and configuring a DAW to generate sounds:
+
+6- Download and install Reaper software from: https://www.reaper.fm/download.php
+	You can alternatively use the Microsoft GS Wavetable Synth which uses the built in General Midi (GM) synth without any additional download. 		More information on how to use different GM sounds is available in the doc "SoniiAladin installation guidelines". If that is your case you can jump to point 
+
+7- To send MIDI messages to Reaper you need to download and install "loopMIDI" since Windows does not have a built in virtual MIDI routing:
+	https://www.tobias-erichsen.de/software/loopmidi.html
+
+8- Install and run loopMIDI. Create a port pressing "+", loopMIDI Port is the default name assigned. Leave loopMIDI running in the background.
+
+9- On Reaper, open the Reaper-SoniAladin.RPP file in the "Synth" folder. 
+	In the folder Synth/Samples you can find additional sounds to incorporate to your sognifications.
+
+10- Configure the channels' inputs to receive loopMIDI Port. The tracks need to be armed for recording to reproduce sound.
+
+11- Enable Input from loopMIDI Port. You can find it in the menu Options/Preferences/MIDI Inputs. Right click in loopMIDI Port to activate the inputs.
+	Check the ID of the device, it should be "1".
+
+12- Install Visual Studio Code to customize SoniAladin: https://code.visualstudio.com/Download?_exp_download=fb315fc982
+
+13- Open Visual Studio Code and modify the MIDI port to "1" (line 111). This changes from GM ("0") to loopMIDI Port ("1").
+ 
+
+Searching sky regions and generating the sonifications:
+
+14- Go to Aladin lite: https://aladin.cds.unistra.fr/AladinLite/
+15- Type "Polaris" (for instance) to search a sky region.
+
+16- If you still have running SoniAladin, close the Terminal and run again SoniAladin to check the configuration. If everything is ok it should sound now.
+
+17- Say 'music' or press 'right arrow' to start the sonification. 
+    Say 'stop' or press 'left arrow' to stop the sonification. 
+    Say 'exit' or press 'Esc' to finish.

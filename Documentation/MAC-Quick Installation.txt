@@ -1,0 +1,62 @@
+MAC QUICK INSTALLATION
+
+On Terminal:
+
+1- Type Python3 => Install Xcode (Developer tools) if needed
+2 -To check Python version type on Terminal: python3 -V (or python3 --version)
+
+	Note: Python 3.14 won't allow the installation of rtmidi dependencies without additional installations.
+
+3- To install pip3 from Terminal type: python3 -m ensurepip --upgrade
+	(help: https://pip.pypa.io/en/stable/installation/)
+ 
+4- To install SoniAladin:
+
+	-Download the workshop files from:
+		Drive: https://drive.google.com/drive/folders/1eKwrJuPZZoxo2iVf9166k-EStZnv6OKF
+
+		or GitHub (requires additional Vosk model downloads): https://github.com/AuditoryVO/ICAD2026_Workshop/tree/main
+
+	-Run the Terminal and navigate to the folder where you downloaded the workshop files. 
+		Type "cd <your_path>" to go to your folder. You can type "ls" to list the files in the folder.
+
+	-type: pip3 install -r requirements.txt
+		(help: https://pip.pypa.io/en/stable/user_guide/)
+
+	-If any error with requirements appears => Try installing them manually.
+
+5- Run SoniAladin from Terminal to check that the module is up and running (it won't sound yet): python3 SoniAladin.py => Allow microphone access if needed
+
+	Note: If all the installation is completed, the following message should appear on Terminal:
+	"Listening... Say 'music' or press 'right arrow' to start the sonification. Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'Esc' to finish."
+
+
+Installing and configuring a DAW to generate sounds:
+
+6- On your computer "Audio MIDI Setup", activate the Driver IAC => Click on Configuration / MIDI Studio (or Window/Show MIDI studio, depending on your Operative System)
+
+7- Download and install Reaper software from: https://www.reaper.fm/download.php
+	You can alternatively use any DAW of your choice. 
+	For instance, on GarageBand (no MIDI channel control allowed) go to: New file / MIDI => default instrument = Classic Electric Piano.
+
+8- On Reaper, open the Reaper-SoniAladin.RPP file in the "Synth" folder. 
+	In the folder Synth/Samples you can find additional sounds to incorporate to your sonifications.
+
+
+
+Searching sky regions and generating the sonifications:
+
+9- Go to Aladin lite: https://aladin.cds.unistra.fr/AladinLite/
+
+10- Type "Polaris" (for instance) to search a sky region.
+
+11- If you still have running SoniAladin, close the Terminal and run again SoniAladin to check the configuration. If everything is ok it should sound now.
+	Allow “keyboard access” if needed => Requires restart
+	Allow “screen recording” if needed => Requires restart
+	You may need to Exit and Re-run for full control (speech and keyboard)
+
+12- Say 'music' or press 'right arrow' to start the sonification. 
+    Say 'stop' or press 'left arrow' to stop the sonification. 
+    Say 'exit' or press'Esc' to finish.
+
+13- Install Visual Studio Code to customize SoniAladin: https://code.visualstudio.com/Download?_exp_download=fb315fc982
