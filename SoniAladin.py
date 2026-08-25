@@ -1,9 +1,12 @@
+import os
+import signal
 import time
 import json
 import queue
 import threading
 import numpy as np
 import sounddevice as sd
+import soundfile as sf
 from PIL import ImageGrab
 from pynput import keyboard
 from IPython.display import Audio
@@ -50,8 +53,18 @@ def on_press(key):
         elif key == keyboard.Key.right:
             print("Starting sonification")
             ctrl.put("Sonification")
+        elif key == keyboard.Key.alt:
+            print("Quick exploration")
+            ctrl.put("Quick")
+        elif key == keyboard.Key.down:
+            print("Default exploration")
+            ctrl.put("Default")
+        elif key == keyboard.Key.ctrl:
+            print("Slow exploration")
+            ctrl.put("Slow")
         elif key == keyboard.Key.esc:
-            running = False
+            print("Sonification module disconnected.")
+            ctrl.put("Exit")
             return False
     except Exception as e:
         print("error:", e)
@@ -59,9 +72,9 @@ def on_press(key):
 
 #Continuous listening for sonification control
 def listening():
-    print("Listening... Say 'music' or press 'right arrow' to start the sonification. Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'Esc' to finish.")
-    with sd.RawInputStream(samplerate=16000, blocksize=8000, dtype='int16',
-                           channels=1, callback=callback):
+    print("Listening... Say 'music' or press 'right arrow' to start the sonification. Say 'stop' or press 'left arrow' to stop the sonification. Say 'exit' or press'esc' to finish. Say 'quick' or press 'option', 'slow' or press 'control' and 'default' or press 'down arrow' to adjust the speed of the exploration")
+    with sd.RawInputStream(samplerate=16000, blocksize=2000, dtype='int16',
+                        channels=1, callback=callback):
         while True:
             data = q.get()                  #gets speech
 
@@ -79,6 +92,20 @@ def listening():
                 if 'exit' in text:
                     print("Sonification module disconnected.")
                     ctrl.put("Exit")
+
+                if 'slow' in text:
+                    print("Slow exploration mode")
+                    ctrl.put("Slow")
+                
+                if 'quick' in text:
+                    print("Quick exploration mode")
+                    ctrl.put("Quick")
+
+                if 'default' in text:
+                    print("Default exploration mode")
+                    ctrl.put("Default")
+
+ 
     
 t1 = threading.Thread(target=listening)
 t1.start()
@@ -86,20 +113,42 @@ t1.start()
 t2 = keyboard.Listener(on_press=on_press)
 t2.start()
 
+start_sound, fs = sf.read('SoniAladin/Audio/Start.wav')
+stop_sound, fs = sf.read('SoniAladin/Audio/Stop.wav')
+exit_sound, fs = sf.read('SoniAladin/Audio/Exit.wav')
+mark_sound, fs = sf.read('SoniAladin/Audio/Mark.wav')
 
 running = True
 
+# Default Sonification parameters
+high_threshold = 65   #Bright levels
+low_threshold = 15
+resolution = 4         #Pixels
+speed = 0.05           #Exploration rate
+
 while running:
     try:
+
         msg = ctrl.get_nowait()
+
+        if msg == "Slow":
+            sd.play(start_sound, fs*2)
+            resolution = 4         #Pixels
+            speed = 0.5
+
+        if msg == "Quick":
+            sd.play(start_sound, fs*2)
+            resolution = 5         #Pixels
+            speed = 0
+
+        if msg == "Default":
+            sd.play(start_sound, fs*2)
+            resolution = 4         #Pixels
+            speed = 0.05
+             
         if msg == "Sonification":
             print("Displaying Sonification")
-    
-            # Sonification parameters
-            high_threshold = 65   #Bright levels
-            low_threshold = 15
-            resolution = 4         #Pixels
-        
+                
             rows = 0
             chords = []
             amplitudes = []
@@ -138,16 +187,24 @@ while running:
             plt.figure(figsize=(12, 9))
             plt.imshow(Aladin_img)
             plt.axis("off") 
-            plt.savefig('Sonialadin/image_aladin.png')
+            plt.savefig('SoniAladin/image_aladin.png')
             img = cv2.imread("SoniAladin/image_aladin.png")
             cv2.imshow(window_name, img)
             cv2.waitKey(1)
           
             all_notes_off = [0xB0, 123, 0]
             midiout.send_message(all_notes_off)
-    
+
+            #Play "start" sound
+            sd.play(start_sound, fs)
+
             with midiout:
                 for y in range(y_dim):
+                    if y == (y_dim/3):
+                        sd.play(stop_sound, fs)
+                    if y == (2*y_dim/3):
+                        sd.play(mark_sound, fs)
+
                     try:
                         msg2 = ctrl.get_nowait()
                         if msg2 == "Stop":
@@ -156,15 +213,13 @@ while running:
                             break
                             
                         if msg2 == "Exit":
+                            msg = "Exit"
                             break
-                            running = False
-
                     except queue.Empty:
                         pass
                         
                     if (y % resolution == 0):
                         blocks = 0
-                        
                         #Draws the red exploration line in the image
                         plt.axhline(y=y, color='red', linewidth=2, alpha = 0.3)
                         plt.savefig('SoniAladin/image_aladin.png')
@@ -209,19 +264,30 @@ while running:
                         img = cv2.imread("SoniAladin/image_aladin.png")
                         cv2.imshow(window_name, img)
                                 
-                        time.sleep(.05) 
+                        time.sleep(speed) 
                 
                         if cv2.waitKey(1) & 0xFF == ord('q'):
+                            msg = "Exit"
                             break
                         rows += 1
             
                 cv2.destroyAllWindows()
                 cv2.waitKey(1)
                 midiout.send_message(all_notes_off)
+                #Play "stop" sound
+                sd.play(stop_sound, fs)
+
 
         if msg == "Exit":
+            midiout = rtmidi.MidiOut()
+            all_notes_off = [0xB0, 123, 0]
             midiout.send_message(all_notes_off)
+            #Play "exit" sound
+            sd.play(exit_sound, fs)
+            running = False
+            os.kill(os.getppid(), signal.SIGTERM)
+            t1.join()
+            t2.join()
             break
-
     except queue.Empty:
         pass
