@@ -14,7 +14,7 @@ Please explore the Documentation folder and read carefully the "SoniAladin-Insta
 Three alternative versions of SoniAladin are provided:
 - SoniAladin.py and SoniAladin.ipynb: Initial prototype used for ICAD'26 workshop and concert. Requires a DAW or virtual synthesizer to generate sound.
 - SoniAladin-Synth.py: Includes TinySoundFont library to generate sound without additional software and configuration.
-- SoniAladin_VO.py: Provides direct links to the objects searched in Aladin at the end of the sonification.
+- SoniAladin_VO.py: Provides direct links to Simbad and Vizier information of the objects searched in Aladin when the sonification finishes.
 
 <img width="1196" height="855" alt="UI" src="https://github.com/user-attachments/assets/b9398f28-5b09-47bf-adf2-774f3ebb3b83" />
 
