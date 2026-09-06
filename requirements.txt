@@ -7,3 +7,6 @@ vosk
 opencv-python
 python-rtmidi
 matplotlib
+rtmidi
+soundfile
+tinysoundfont
